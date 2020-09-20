@@ -162,7 +162,15 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p> 1.利用Time节点结合UV旋转可以对材质上的贴图做一些旋转的处理，程序节点图如下：<img src="https://img-blog.csdnimg.cn/20200724192458262.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L29zY2Fyd3Nk,size_16,color_FFFFFF,t_70" alt="旋转贴图"><br>   节点图很简单，主要是利用Rotate节点，操作UV节点进行旋转，Rotation引脚连接Time节点乘一个常数的结果，Time节点输出的值是时间的累计，乘以速度。Rotate节点输出则是变化后的uv，将结果引脚连接到Texture2D的uv上，便可以对贴图进行旋转操作。<br>   效果如下：<img src="https://img-blog.csdnimg.cn/20200724222249878.gif" alt="效果图"></p>
+  <hr>
+<p>title: Unity ShaderGraphs（一）旋转和平移贴图<br>date: 2020-9-20 23:25<br>tags: </p>
+<ul>
+<li>图形学</li>
+<li>Shader</li>
+<li>Unity<br>categories:</li>
+<li><h2 id="Unity-ShaderGraphs"><a href="#Unity-ShaderGraphs" class="headerlink" title="Unity ShaderGraphs"></a>Unity ShaderGraphs</h2></li>
+</ul>
+<p>1.利用Time节点结合UV旋转可以对材质上的贴图做一些旋转的处理，程序节点图如下：<img src="https://img-blog.csdnimg.cn/20200724192458262.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L29zY2Fyd3Nk,size_16,color_FFFFFF,t_70" alt="旋转贴图"><br>   节点图很简单，主要是利用Rotate节点，操作UV节点进行旋转，Rotation引脚连接Time节点乘一个常数的结果，Time节点输出的值是时间的累计，乘以速度。Rotate节点输出则是变化后的uv，将结果引脚连接到Texture2D的uv上，便可以对贴图进行旋转操作。<br>   效果如下：<img src="https://img-blog.csdnimg.cn/20200724222249878.gif" alt="效果图"></p>
 <ol start="2">
 <li>同理，贴图的平移也可以通过Time节点控制贴图的Tiling And<br>Offset，如影响贴图的引脚中的Offset.x的值，则会水平方向平移贴图，节点程序如下图：<br><img src="https://img-blog.csdnimg.cn/20200724233012918.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L29zY2Fyd3Nk,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>值得注意的是：需要将图片的循环模式（Wrap Mode）改为：<strong>Repeat</strong>，这样贴图才会正常的循环（上面旋转忘了改了嘻嘻）<br><img src="https://img-blog.csdnimg.cn/20200724233419347.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L29zY2Fyd3Nk,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
 </ol>
